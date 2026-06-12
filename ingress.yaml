@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: task-app-ingress-frontend
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: my-nest-api-frontend.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: task-app-service-frontend
+            port:
+              number: 80
